@@ -29,14 +29,25 @@ const app = express();
 
 // Middleware
 // Configure CORS
+const clientUrl = process.env.CLIENT_URL || (process.env.NODE_ENV === 'production'
+    ? 'https://your-production-frontend.com' // replace with your real frontend URL in production
+    : 'http://localhost:5173');
+
 const corsOptions = {
-    origin: process.env.NODE_ENV === 'production'
-        ? 'https://your-production-frontend.com' // TODO: Replace with your actual frontend URL in production
-        : 'http://localhost:5173', // Allow localhost for development
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl)
+        if (!origin) return callback(null, true);
+        if (origin === clientUrl) return callback(null, true);
+        return callback(new Error('CORS policy: Origin not allowed'));
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
 app.use(cors(corsOptions));
+// Enable pre-flight across the board
+app.options('*', cors(corsOptions));
 app.use(express.json());
 
 // Routes

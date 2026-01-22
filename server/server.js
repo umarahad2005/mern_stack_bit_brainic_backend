@@ -30,8 +30,8 @@ const app = express();
 // Middleware
 // Configure CORS
 const clientUrl = process.env.CLIENT_URL || (process.env.NODE_ENV === 'production'
-    ? 'https://your-production-frontend.com' // replace with your real frontend URL in production
-    : 'http://localhost:5173');
+    ? 'https://www.bitbrainic.dev/' // replace with your real frontend URL in production
+    : 'https://mern-stack-bi-git-674e5c-umar-ahad-uddin-ahmed-usmanis-projects.vercel.app/');
 
 const corsOptions = {
     origin: (origin, callback) => {

@@ -1,0 +1,31 @@
+{
+  "name": "bit-brainic-backend",
+  "version": "1.0.0",
+  "description": "Bit Brainic - Your CS Tutor API Server",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "prestart": "npx kill-port 5000",
+    "start": "nodemon server.js",
+    "dev": "npx kill-port 5000 && nodemon server.js",
+    "prod": "npx kill-port 5000 && node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.35.0",
+    "@google/generative-ai": "^0.21.0",
+    "@langchain/google-genai": "^2.1.4",
+    "@langchain/google-vertexai": "^2.1.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^1.2.4",
+    "mongoose": "^8.7.0",
+    "nodemailer": "^7.0.12"
+  },
+  "devDependencies": {
+    "kill-port": "^2.0.1",
+    "nodemon": "^3.1.11"
+  }
+}

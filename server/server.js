@@ -51,13 +51,13 @@ app.options('*', cors(corsOptions));
 app.use(express.json());
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/contact', contactRoutes);
+app.use('/auth', authRoutes);
+app.use('/chat', chatRoutes);
+app.use('/admin', adminRoutes);
+app.use('/contact', contactRoutes);
 
 // Health check route
-app.get('/api/health', (req, res) => {
+app.get('/health', (req, res) => {
     res.json({ status: 'ok', message: 'Bit Brainic API is running!' });
 });
 

@@ -28,21 +28,12 @@ connectDB();
 const app = express();
 
 // Middleware
-// Configure CORS
-const clientUrl = process.env.CLIENT_URL || (process.env.NODE_ENV === 'production'
-    ? 'https://www.bitbrainic.dev/' // replace with your real frontend URL in production
-    : 'https://mern-stack-bi-git-674e5c-umar-ahad-uddin-ahmed-usmanis-projects.vercel.app/');
-
+// Configure CORS - Allow all origins for flexibility
 const corsOptions = {
-    origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps or curl)
-        if (!origin) return callback(null, true);
-        if (origin === clientUrl) return callback(null, true);
-        return callback(new Error('CORS policy: Origin not allowed'));
-    },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: true, // Allow all origins
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-admin-password'],
 };
 
 app.use(cors(corsOptions));

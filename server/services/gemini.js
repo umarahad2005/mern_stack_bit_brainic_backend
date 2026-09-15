@@ -127,7 +127,7 @@ const convertToGeminiHistory = (messages) => {
  */
 const generateResponse = async (messages, user = null, retryCount = 0) => {
     const MAX_RETRIES = 3;
-    const MODELS = ['gemini-3.5-flash-cyber', 'gemini-2.5-flash']; // Fallback models
+    const MODELS = ['gemini-3.8-flash', 'gemini-3.7-flash']; // Fallback models
 
     try {
         const ai = getAI();
